@@ -15,13 +15,14 @@ main = do
       printPolynomial poly
       let sols = solvePolynomial poly
       mapM_
-        ( \(n, s) ->
-            putStrLn $
-              "x_" ++ show n ++ " ≈ "
-                ++ show (realPart s)
-                ++ " + "
-                ++ show (imagPart s)
-                ++ "i"
+        ( \(n, s) -> do
+            putStr $ "x_" ++ show n ++ " ≈ "
+            putStr . show . realPart $ s
+            if imagPart s >= 0
+              then putStr " + "
+              else putStr " - "
+            putStr . show . abs . imagPart $ s
+            putStrLn "i"
         )
         $ zip [1 .. length sols] sols
     Nothing -> putStrLn "String provided is not in correct format for polynomial"
