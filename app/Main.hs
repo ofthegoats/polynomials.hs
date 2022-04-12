@@ -18,11 +18,13 @@ main = do
         ( \(n, s) -> do
             putStr $ "x_" ++ show n ++ " ≈ "
             putStr . show . realPart $ s
-            if imagPart s >= 0
-              then putStr " + "
-              else putStr " - "
-            putStr . show . abs . imagPart $ s
-            putStrLn "i"
+            when (imagPart s /= 0) $ do
+              if imagPart s >= 0
+                then putStr " + "
+                else putStr " - "
+              putStr . show . abs . imagPart $ s
+              putStr "i"
+            putStrLn "" -- end line
         )
         $ zip [1 .. length sols] sols
     Nothing -> putStrLn "String provided is not in correct format for polynomial"
