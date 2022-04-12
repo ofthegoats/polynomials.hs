@@ -62,7 +62,6 @@ Format with Ormolu, avoid long lines, separate components into modules under `sr
 
 ## TODO
 
-- [ ] check to see if a solution with a small imaginary component should be real
 - [ ] implement tests
   - [ ] parsing
   - [ ] solving (within a reasonable margin of error)
